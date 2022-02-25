@@ -47,7 +47,7 @@ except: # 예외처리(국내 지역 외 검색 시)
         today_temperature = weather_soup.find('span', {'class':'todaytemp'}).text  # 오늘 기온 크롤링
         today_temperature = f'{today_temperature}°'
         today_weather = weather_soup.find('p', {'class':'cast_txt'}).text  # 오늘 날씨(맑음, 흐림, 구름 많음 등)
-        # today_weather = today_weather[0:2].strip()
+        today_weather = today_weather[0:2].strip()
         # yesterday_weather = weather_soup.find('p', {'class':'cast_txt'}).text
         yesterday_weather = '-'
         today_rain = '-'
@@ -63,13 +63,34 @@ except: # 예외처리(국내 지역 외 검색 시)
         dust1 = '-'
         dust2 = '-'
 
+weather_result=[]
+weather_result.append(area_title)
+weather_result.append(today_temperature)
+weather_result.append(today_weather)
+weather_result.append(yesterday_weather)
+weather_result.append(today_rain)
+weather_result.append(dust1)
+weather_result.append(dust2)
+
+# print(weather_result)
+
+# print('***** 오늘의 날씨 정보 *****')
+# print('검색지역 : ' , area_title)
+# print('오늘의 날씨 : ' , today_weather)
+# print('오늘의 기온 : ', today_temperature)
+# print('어제와의 비교 : ' , yesterday_weather)
+# print('강수확률 :',today_rain)
+# print('미세먼지 : ' , dust1)
+# print('초미세먼지 : ' , dust2)
+# print('*************************')
+#
 
 print('***** 오늘의 날씨 정보 *****')
-print('검색지역 : ' , area_title)
-print('오늘의 날씨 : ' , today_weather)
-print('오늘의 기온 : ', today_temperature)
-print('어제와의 비교 : ' , yesterday_weather)
-print('강수확률 :',today_rain)
-print('미세먼지 : ' , dust1)
-print('초미세먼지 : ' , dust2)
+print('검색지역 : ' , weather_result[0])
+print('오늘의 날씨 : ' , weather_result[2])
+print('오늘의 기온 : ', weather_result[1])
+print('어제와의 비교 : ' , weather_result[3])
+print('강수확률 :',weather_result[4])
+print('미세먼지 : ' , weather_result[5])
+print('초미세먼지 : ' , weather_result[6])
 print('*************************')
